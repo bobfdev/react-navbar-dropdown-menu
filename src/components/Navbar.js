@@ -14,10 +14,27 @@ function Navbar() {
 
     const closeMenu = () => setClick(false);
 
+    const onMouseEnter = () => {
+        if(window.innerWidth < 960) {
+            setDropdown(false);
+        } else {
+            setDropdown(true);
+        }
+    };
+
+    const onMouseLeave = () => {
+        if(window.innerWidth < 960) {
+            setDropdown(false);
+        } else {
+            setDropdown(false);
+        }
+    };
+
     return (
        <>
         <nav className='navbar'>
             <Link to='/' className='navbar-logo'>
+                <i class='fab fa-firstdraft' />
                 EPIC
             </Link>
             <div className='menu-icon' onClick={handleClick}>
@@ -30,7 +47,11 @@ function Navbar() {
                         Home
                     </Link>
                 </li>
-                <li className='nav-item'>
+                <li 
+                    className='nav-item' 
+                    onMouseEnter={onMouseEnter}
+                    onMouseLeave={onMouseLeave}
+                >
                     <Link to='/services' className='nav-links' onClick={closeMenu}>
                         Services <i className='fas fa-caret-down' />
                     </Link>
